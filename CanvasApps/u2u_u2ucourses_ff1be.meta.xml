@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>u2u_u2ucourses_ff1be</Name>
+  <AppVersion>2022-06-28T06:41:15Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.22062.5.0</CreatedByClientVersion>
+  <MinClientVersion>3.22062.5.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.22062.5","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","sienaVersion":"20220627T141739Z-3.22062.5.0"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+  <DisplayName>U2U Courses</DisplayName>
+  <Description xsi:nil="true"></Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Publisher xsi:nil="true"></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{"dbb31a13-f079-470e-921e-f31c4941f8d5":{"id":"/providers/microsoft.powerapps/apis/shared_sharepointonline","displayName":"SharePoint","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1578/1.0.1578.2813/sharepointonline/icon.png","dataSources":["SP Course List"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{"https://u2u365.sharepoint.com/teams/UPPADev2":{"datasetOverride":{"name":"https://u2u365.sharepoint.com/teams/UPPADev2","environmentVariableName":"u2u_SPCourseSite"},"dataSources":{"SP Course List":{"tableName":"d60b58b4-6f6d-4c9e-99f3-1ec1b80f3630","tableNameOverride":{"name":"d60b58b4-6f6d-4c9e-99f3-1ec1b80f3630","environmentVariableName":"u2u_SPCourseList"}}}}},"apiTier":"Standard","actions":["providers/PowerPlatform.Governance/Operations/Read","providers/PowerPlatform.Governance/Operations/Write"]}}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Environment Variable Values":{"entitySetName":"environmentvariablevalues","logicalName":"environmentvariablevalue"},"Environment Variable Definitions":{"entitySetName":"environmentvariabledefinitions","logicalName":"environmentvariabledefinition"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"environmentvariablevalue","componenttype":1},{"logicalname":"environmentvariabledefinition","componenttype":1},{"logicalname":"u2u_SPCourseSite","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"u2u_SPCourseList","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"}]}</CdsDependencies>
+  <IsCustomizable>0</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/u2u_u2ucourses_ff1be_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/u2u_u2ucourses_ff1be_DocumentUri.msapp</DocumentUri>
+</CanvasApp>

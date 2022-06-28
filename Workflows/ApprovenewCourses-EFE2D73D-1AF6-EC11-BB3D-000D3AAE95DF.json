@@ -1,0 +1,107 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "u2u_O365Email"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "u2u_sharedsharepointonline_42740"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SP Course Site (u2u_SPCourseSite)": {
+          "defaultValue": "https://u2u365.sharepoint.com/teams/UPPADev2",
+          "type": "String",
+          "metadata": {
+            "schemaName": "u2u_SPCourseSite"
+          }
+        },
+        "SP Course List (u2u_SPCourseList)": {
+          "defaultValue": "d60b58b4-6f6d-4c9e-99f3-1ec1b80f3630",
+          "type": "String",
+          "metadata": {
+            "schemaName": "u2u_SPCourseList"
+          }
+        },
+        "Approver Name (u2u_ApproverName)": {
+          "defaultValue": "Dev Approver",
+          "type": "String",
+          "metadata": {
+            "schemaName": "u2u_ApproverName"
+          }
+        }
+      },
+      "triggers": {
+        "When_an_item_is_created": {
+          "recurrence": {
+            "interval": 1,
+            "frequency": "Minute"
+          },
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "operationMetadataId": "3567cac2-434e-48ab-b446-13f2f9d1b95e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetOnNewItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "@parameters('SP Course Site (u2u_SPCourseSite)')",
+              "table": "@parameters('SP Course List (u2u_SPCourseList)')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Send_an_email_(V2)": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "335706cc-213a-4769-884c-b1f488cc0e52"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "jurgen@u2u.be",
+              "emailMessage/Subject": "Approve new course",
+              "emailMessage/Body": "<p>Approver Name: @{parameters('Approver Name (u2u_ApproverName)')}<br>\n<br>\n<br>\nSharePoint Site URL: @{parameters('SP Course Site (u2u_SPCourseSite)')}<br>\n<br>\nSharePoint List ID:@{parameters('SP Course List (u2u_SPCourseList)')}</p>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
